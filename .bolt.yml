@@ -1,0 +1,8 @@
+paths:
+    cache: app/cache
+    config: app/config
+    database: app/database
+    web: www
+    themebase: www/theme
+    files: www/files
+    view: www/bolt-public/view

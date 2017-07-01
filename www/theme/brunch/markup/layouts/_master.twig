@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>
+            {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+                {{ app.config.get('general/sitename') -}}
+            {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
+        </title>
+        {{ include('markup/partials/_master_favicons.twig') }}
+        <link rel="stylesheet" href="{{ asset('css/vendor.css', 'theme') }}">
+        <link rel="stylesheet" href="{{ asset('css/main.css', 'theme') }}">
+    </head>
+    <body>
+        {{ include('markup/partials/_ui_header.twig') }}
+        {{ include('markup/partials/_ui_nav.twig') }}
+
+        {% block main %}
+        {% endblock main %}
+
+        {{ include('markup/partials/_ui_footer.twig') }}
+        <script src="{{ asset('js/vendor.js', 'theme') }}"></script>
+        <script src="{{ asset('js/main.js', 'theme') }}"></script>
+        <script>require('src/scripts/main').init();</script>
+    </body>
+</html>
