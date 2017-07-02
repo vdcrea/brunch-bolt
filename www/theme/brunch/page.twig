@@ -2,22 +2,29 @@
 
 {% block main %}
 
-    <h1>{{ record.title }}</h1>
+    {% for module in record.modules %}
 
-    {{ record.teaser }}
+        {% for modulejoin in module %}
+            {% setcontent moduledata = "modules" where { 'id': modulejoin.value } %}
 
-    {% if record.image!="" %}
-        <a href="{{ image(record.image) }}">
-            <img src="{{ thumbnail(record.image, 740, 560) }}">
-        </a>
-    {% endif %}
+            {% if moduledata.template == 'module_image.twig' %}
+                {% include 'markup/partials/_module_image.twig' with { 'record': moduledata, 'extended': true } %}
+            {% endif %}
 
-    {{ record.body }}
+            {% if moduledata.template == 'module_slick.twig' %}
+                {% include 'markup/partials/_module_slick.twig' with { 'record': moduledata, 'extended': true } %}
+            {% endif %}
 
-    {# If there are repeaters, we should output them. #}
-    {{ fields(common = false, extended = false, repeaters = true) }}
+            {% if moduledata.template == 'module_text.twig' %}
+                {% include 'markup/partials/_module_text.twig' with { 'record': moduledata, 'extended': true } %}
+            {% endif %}
 
-    {{ dump(record) }}
+            {% if moduledata.template == 'module_block.twig' %}
+                {% include 'markup/partials/_module_block.twig' with { 'record': moduledata, 'extended': true } %}
+            {% endif %}
 
+        {% endfor %}
+
+    {% endfor %}
 
 {% endblock main %}

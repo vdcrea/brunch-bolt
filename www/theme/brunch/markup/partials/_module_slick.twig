@@ -1,0 +1,10 @@
+<div class="module_slick">
+    <h2 class="title">{{ record.title }}</h2>
+    <div class="carousel">
+        {% for slide in record.slides %}
+        <div class="slide">
+            <img src="{{ slide.image|thumbnail(1280, 800, "r") }}">
+        </div>
+        {% endfor %}
+    </div>
+</div>

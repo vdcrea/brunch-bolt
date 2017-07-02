@@ -1,7 +1,8 @@
+{% setcontent pages = 'pages/latest/4' where { 'taxonomy/chapter': 'main'} %}
 <nav class="nav">
-    <ul>
-        <li><a class="nav_link" href="/">Home</a></li>
-        <li><a class="nav_link" href="/page/page-01">Page 01</a></li>
-        <li><a class="nav_link" href="/page/page-02">Page 02</a></li>
-    </ul>
+    {% for page in pages|order('-sortorder') %}
+        {% if loop.first %}<ul>{% endif %}
+            <li><a class="nav_link{% if page|current %} current{% endif %}" href="/page/{{ page.slug }}">{{ page.title|trimtext(24) }}</a></li>
+        {% if loop.last %}</ul>{% endif %}
+    {% endfor %}
 </nav>

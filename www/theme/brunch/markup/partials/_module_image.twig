@@ -1,0 +1,6 @@
+<div class="module_image">
+    <h2 class="title">{{ record.title }}</h2>
+    {% if record.image!="" %}
+        <img src="{{ record.image|thumbnail(1280, 800, "r") }}">
+    {% endif %}
+</div>

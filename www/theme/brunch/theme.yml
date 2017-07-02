@@ -1,0 +1,18 @@
+# Template filenames. If you 're creating a theme for distribution, you can specify
+# the filenames of the templates here. The templates you will set in this config
+# file will override the ones in the global app/config/config.yml, so beware!
+# maintenance_template: maintenance_default.twig
+homepage_template: page.twig
+
+# Templates can be named for display in the template selector, to allow editors
+# to pick from easier to understand names.
+templateselect:
+    templates:
+        - name: 'Block'
+          filename: 'module_block.twig'
+        - name: 'Image'
+          filename: 'module_image.twig'
+        - name: 'Slick'
+          filename: 'module_slick.twig'
+        - name: 'Text'
+          filename: 'module_text.twig'
